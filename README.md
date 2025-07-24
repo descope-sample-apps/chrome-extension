@@ -12,7 +12,7 @@ This project is a sample Chrome extension demonstrating how to use [Descope](htt
 ### Installation
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/descope-dev/chrome-extension.git
    cd chrome-extension
    ```
 2. **Install dependencies:**
