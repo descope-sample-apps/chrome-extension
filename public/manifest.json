@@ -1,0 +1,22 @@
+{
+  "name": "Descope Extension",
+  "description": "Descope Flow Extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "descope.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://static.descope.com/*"
+  ],
+  "web_accessible_resources": [
+  {
+    "resources": ["config.json", "theme.json"],
+    "matches": ["<all_urls>"]
+  }
+]
+}

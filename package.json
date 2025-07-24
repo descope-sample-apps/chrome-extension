@@ -1,0 +1,28 @@
+{
+  "name": "chrome-extension",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "watch": "rollup -c -w --watch src --watch public"
+  },
+  "keywords": [],
+  "author": "Nir Gur Arie",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-html": "^2.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "rollup": "^4.45.1",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-delete": "^3.0.1",
+    "rollup-plugin-postcss": "^4.0.2"
+  },
+  "dependencies": {
+    "@descope/web-component": "3.43.20",
+    "@descope/web-components-ui": "1.113.0"
+  }
+}
