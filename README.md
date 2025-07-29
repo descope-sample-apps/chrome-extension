@@ -2,6 +2,10 @@
 
 This project is a sample Chrome extension demonstrating how to use [Descope](https://www.descope.com/) for device authentication in a browser extension context.
 
+
+https://github.com/user-attachments/assets/78763d9b-1533-4e4b-8650-7c3e0f6efc55
+
+
 ## Getting Started
 
 ### Prerequisites
