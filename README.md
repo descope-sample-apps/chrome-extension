@@ -7,7 +7,9 @@
 
 A production-ready Chrome extension sample demonstrating secure device authentication using [Descope](https://www.descope.com/). This extension showcases how to integrate Descope's authentication platform within a browser extension context using modern Chrome Extension Manifest V3 standards.
 
-https://github.com/user-attachments/assets/78763d9b-1533-4e4b-8650-7c3e0f6efc55
+https://github.com/user-attachments/assets/1511921b-440b-4f90-954a-bd261f6ac730
+
+
 
 ## Features
 
