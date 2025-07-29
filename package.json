@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "@descope/web-component": "3.43.20",
-    "@descope/web-components-ui": "1.113.0"
+    "@descope/web-components-ui": "1.115.0"
   }
 }
