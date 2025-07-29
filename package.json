@@ -1,6 +1,7 @@
 {
-  "name": "chrome-extension",
+  "name": "descope-chrome-extension-sample",
   "version": "1.0.0",
+  "description": "A production-ready Chrome extension demonstrating secure authentication using Descope's device flow authentication",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -8,10 +9,26 @@
     "build": "rollup -c",
     "watch": "rollup -c -w --watch src --watch public"
   },
-  "keywords": [],
-  "author": "Nir Gur Arie",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "descope",
+    "chrome-extension",
+    "authentication",
+    "device-flow",
+    "oauth2",
+    "security",
+    "manifest-v3",
+    "sample-app"
+  ],
+  "author": "Descope",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/descope-sample-apps/chrome-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/descope-sample-apps/chrome-extension/issues"
+  },
+  "homepage": "https://github.com/descope-sample-apps/chrome-extension#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-html": "^2.0.0",
