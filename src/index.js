@@ -98,7 +98,7 @@ loginBtn.addEventListener('click', async (e) => {
     chrome.runtime.sendMessage({ 
       type: 'start-login', 
       projectId, 
-      appId 
+      appId
     }, (response) => {
       if (response && response.success) {
         updateUI({ 

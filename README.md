@@ -1,31 +1,17 @@
-# Descope Chrome Extension Sample
+# Descope Chrome Extension Sample App
 
 [![License: ISC](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/Node.js-16%2B-green.svg)](https://nodejs.org/)
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-yellow.svg)](https://developer.chrome.com/docs/extensions/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange.svg)](https://developer.chrome.com/docs/extensions/mv3/)
 
-A production-ready Chrome extension sample demonstrating secure device authentication using [Descope](https://www.descope.com/). This extension showcases how to integrate Descope's authentication platform within a browser extension context using modern Chrome Extension Manifest V3 standards.
-
-https://github.com/user-attachments/assets/1511921b-440b-4f90-954a-bd261f6ac730
-
-
+A Chrome extension sample app demonstrating secure OAuth 2.0 authorization code flow using [Descope Federated Apps](https://www.descope.com/). This extension showcases how to integrate Descope's authentication platform within a browser extension context using modern Chrome Extension Manifest V3 standards.
 
 ## Features
 
-- 🔐 **Device Authentication Flow** - Secure device-based authentication using Descope
+- 🔐 **OAuth 2.0 Authorization Code Flow** - Secure OIDC authentication using Descope Federated Apps
 - 🚀 **Manifest V3 Compliant** - Built with the latest Chrome Extension standards
-- 📱 **Cross-Device Support** - Works seamlessly across different devices
-
-## Table of Contents
-
-- [Getting Started](#getting-started)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Development](#development)
-- [Usage](#usage)
-- [Scripts](#scripts)
-- [License](#license)
+- 🎯 **PKCE Security** - Implements Proof Key for Code Exchange for enhanced security
 
 ## Getting Started
 
@@ -55,26 +41,26 @@ Before you begin, ensure you have the following installed:
 
 ## Configuration
 
-### 1. Descope Project Setup
+### 1. Descope Setup
 
 1. **Create a Descope Project:**
    - Go to the [Descope Console](https://app.descope.com/)
    - Create a new project or select an existing one
-   - Note your **Project ID** and **Project URL**
+   - Note your **Project ID**
 
-2. **Configure Authentication Methods:**
+2. **Configure Federated App:**
+   - Navigate to Federated Apps in your Descope console
+   - Create a new OIDC Federated App
+   - Note your **App ID**
+
+3. **Configure Authentication Flow:**
    - Navigate to Authentication Methods in your Descope console
    - Enable desired authentication methods (Email, SMS, Social, etc.)
-   - Configure device trust settings if needed
+   - Configure OIDC settings for your federated app
 
 ### 2. Extension Configuration
 
-The extension requires your Descope project details:
-
-- **Project ID**: Your Descope project identifier
-- **Issuer Domain**: Your Descope project domain (e.g., `https://auth.company.com`)
-
-These can be configured through the extension popup interface after installation.
+Enter your **Project ID** and **App ID** in the extension popup after installation.
 
 ## Development
 
@@ -83,108 +69,41 @@ These can be configured through the extension popup interface after installation
 For active development with hot reload:
 
 ```bash
-npm run watch
+npm run watch  # Build and watch for changes
 ```
 
-This command:
-- Uses Rollup to bundle JavaScript and CSS
-- Outputs files to the `dist/` directory
-- Watches for file changes and rebuilds automatically
-- Enables live development workflow
+### Loading in Chrome
 
-### Loading the Extension in Chrome
-
-1. **Open Chrome Extensions page:**
-   - Navigate to `chrome://extensions/`
-   - Or use Chrome menu → More tools → Extensions
-
-2. **Enable Developer Mode:**
-   - Toggle the "Developer mode" switch in the top right corner
-
-3. **Load the Extension:**
-   - Click "Load unpacked"
-   - Select the `dist/` directory from this project
-   - The extension icon will appear in your Chrome toolbar
-
-4. **Reload After Changes:**
-   - Click the reload icon on your extension card in `chrome://extensions/`
-   - Or use the keyboard shortcut `Ctrl+R` (Windows/Linux) or `Cmd+R` (Mac)
-
-### Development Tips
-
-- **Debug Console**: Right-click the extension icon → Inspect popup
-- **Background Script Debugging**: Go to `chrome://extensions/` → Click "Service worker" under your extension
-- **Hot Reload**: Changes to source files automatically trigger rebuilds when using `npm run watch`
+1. Go to `chrome://extensions/`
+2. Enable "Developer mode"
+3. Click "Load unpacked" and select the `dist/` directory
 
 ## Usage
 
-### First Time Setup
+### Setup
 
 1. **Click the Extension Icon:**
    - Look for the Descope icon in your Chrome toolbar
    - Click to open the authentication popup
 
 2. **Enter Project Details:**
-   - **Issuer Domain**: Enter your Descope project URL
-   - **Client ID**: Enter your Descope project ID
+   - **Project ID**: Enter your Descope project ID
+   - **App ID**: Enter your Descope Federated App ID
 
 3. **Initiate Authentication:**
    - Click the "Login" button
-   - The device authentication flow will begin
+   - The OAuth authorization code flow will begin
 
 ### Authentication Flow
 
-1. **Device Code Generation:**
-   - Extension generates a unique device code
-   - QR code or verification URL is displayed
-
-2. **Complete Authentication:**
-   - Follow the displayed instructions
-   - Verify your identity on the Descope verification page
-   - Return to the extension popup
-
-3. **Success State:**
-   - User information will be displayed
-   - Authentication tokens are securely stored
-   - Extension is ready for use
-
+1. **Authorization Request**: Extension generates a code verifier/challenge and redirects to Descope
+2. **User Authentication**: User authenticates through the Descope flow
+3. **Code Exchange**: Extension exchanges authorization code for tokens using PKCE
+4. **Token Storage**: Access and ID tokens are securely stored and are able to be used by the extension
 
 ## Scripts
 
 | Command | Description |
 |---------|-------------|
-| `npm run build` | Build the extension for production |
-| `npm run watch` | Build and watch for changes during development |
-| `npm test` | Run tests (currently not implemented) |
-
-### Production Build
-
-For creating a production-ready build:
-
-```bash
-npm run build
-```
-
-This creates optimized files in the `dist/` directory ready for Chrome Web Store submission.
-
-### Getting Help
-
-If you encounter issues:
-
-1. Check the [Issues](https://github.com/descope-sample-apps/chrome-extension/issues) page
-2. Review [Descope Documentation](https://docs.descope.com/)
-3. Contact [Descope Support](https://www.descope.com/support)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-- **Documentation**: [Descope Docs](https://docs.descope.com/)
-- **Community**: [Descope Community](https://community.descope.com/)
-- **Support**: [Contact Support](https://www.descope.com/support)
-
----
-
-Made with ❤️ by the Descope team
+| `npm run build` | Build for production |
+| `npm run watch` | Build and watch for changes |

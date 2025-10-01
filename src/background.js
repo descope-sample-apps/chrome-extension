@@ -84,8 +84,10 @@ async function startAuthFlow(projectId, appId) {
     
     console.log('Stored OIDC state:', state);
 
-    // Use the authorization endpoint from the metadata
-    const authEndpoint = `https://api.descope.com/${appId}/oauth2/v1/authorize`;
+    // Use the correct authorization endpoint based on app ID
+    const authEndpoint = appId === 'descope-default-oidc' 
+      ? 'https://api.descope.com/oauth2/v1/authorize'
+      : `https://api.descope.com/${appId}/oauth2/v1/authorize`;
     console.log('Debug - authEndpoint:', authEndpoint);
     console.log('Redirect URI:', redirectUri);
       
@@ -126,8 +128,11 @@ async function startAuthFlow(projectId, appId) {
         throw new Error('Invalid authorization response');
       }
 
-      // Instead of using oidc-client-ts callback, manually exchange code for tokens
-      const tokenResponse = await fetch(`https://api.descope.com/${appId}/oauth2/v1/token`, {
+      // Exchange code for tokens
+      const tokenEndpoint = appId === 'descope-default-oidc' 
+        ? 'https://api.descope.com/oauth2/v1/token'
+        : `https://api.descope.com/${appId}/oauth2/v1/token`;
+      const tokenResponse = await fetch(tokenEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -149,7 +154,10 @@ async function startAuthFlow(projectId, appId) {
       console.log('Token response:', tokenData);
 
       // Get user info
-      const userInfoResponse = await fetch(`https://api.descope.com/${appId}/oauth2/v1/userinfo`, {
+      const userInfoEndpoint = appId === 'descope-default-oidc' 
+        ? 'https://api.descope.com/oauth2/v1/userinfo'
+        : `https://api.descope.com/${appId}/oauth2/v1/userinfo`;
+      const userInfoResponse = await fetch(userInfoEndpoint, {
         headers: {
           'Authorization': `Bearer ${tokenData.access_token}`
         }
@@ -172,6 +180,13 @@ async function startAuthFlow(projectId, appId) {
       };
 
       await updateAuthState(user);
+      
+      // Reopen the popup after successful authentication
+      try {
+        await chrome.action.openPopup();
+      } catch (error) {
+        console.log('Could not reopen popup (user may have closed it):', error);
+      }
       
       return { success: true, userInfo: user.profile };
     } catch (identityError) {
