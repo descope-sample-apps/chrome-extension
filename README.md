@@ -50,13 +50,8 @@ Before you begin, ensure you have the following installed:
 
 2. **Configure Federated App:**
    - Navigate to Federated Apps in your Descope console
-   - Create a new OIDC Federated App
+   - Use the OIDC default application or create a new OIDC Federated App
    - Note your **App ID**
-
-3. **Configure Authentication Flow:**
-   - Navigate to Authentication Methods in your Descope console
-   - Enable desired authentication methods (Email, SMS, Social, etc.)
-   - Configure OIDC settings for your federated app
 
 ### 2. Extension Configuration
 
