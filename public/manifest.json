@@ -13,7 +13,8 @@
   "permissions": [
     "identity",
     "storage",
-    "activeTab"
+    "activeTab",
+    "webNavigation"
   ],
   "host_permissions": [
     "https://*.descope.com/*",

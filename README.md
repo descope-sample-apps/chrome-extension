@@ -51,11 +51,11 @@ Before you begin, ensure you have the following installed:
 2. **Configure Federated App:**
    - Navigate to Federated Apps in your Descope console
    - Use the OIDC default application or create a new OIDC Federated App
-   - Note your **App ID**
+   - Note your **App ID** (optional - defaults to OIDC default application)
 
 ### 2. Extension Configuration
 
-Enter your **Project ID** and **App ID** in the extension popup after installation.
+Enter your **Project ID** and optionally your **App ID** in the extension popup after installation. If no App ID is provided, the extension will use the default Descope OIDC app.
 
 ## Development
 
@@ -82,8 +82,8 @@ npm run watch  # Build and watch for changes
    - Click to open the authentication popup
 
 2. **Enter Project Details:**
-   - **Project ID**: Enter your Descope project ID
-   - **App ID**: Enter your Descope Federated App ID
+   - **Project ID**: Enter your Descope project ID (required)
+   - **App ID**: Enter your Descope Federated App ID (optional - defaults to OIDC default application)
 
 3. **Initiate Authentication:**
    - Click the "Login" button

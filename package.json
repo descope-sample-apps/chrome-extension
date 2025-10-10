@@ -21,8 +21,5 @@
     "rollup-plugin-delete": "^3.0.1",
     "rollup-plugin-postcss": "^4.0.2"
   },
-  "dependencies": {
-    "@descope/web-component": "3.43.20",
-    "@descope/web-components-ui": "1.115.0"
-  }
+  "dependencies": {}
 }
