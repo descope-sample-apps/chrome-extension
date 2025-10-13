@@ -1,6 +1,6 @@
 {
-  "name": "Descope Extension",
-  "description": "Descope Flow Extension",
+  "name": "Descope Federated App Extension",
+  "description": "Descope OIDC Federated App Chrome Extension",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
@@ -10,13 +10,20 @@
   "background": {
     "service_worker": "background.js"
   },
+  "permissions": [
+    "identity",
+    "storage",
+    "activeTab",
+    "webNavigation"
+  ],
   "host_permissions": [
-    "https://static.descope.com/*"
+    "https://*.descope.com/*",
+    "https://*.descope.io/*"
   ],
   "web_accessible_resources": [
-  {
-    "resources": ["config.json", "theme.json"],
-    "matches": ["<all_urls>"]
-  }
-]
+    {
+      "resources": ["descope.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
